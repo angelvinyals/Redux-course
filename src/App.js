@@ -13,20 +13,31 @@ class App extends Component {
         {id:2, name:'Build an Awesome app', isComplete:false},
         {id:3, name:'Ship', isComplete:true}
 
-      ]
+      ],
+      currentTodo:''
     }
+    
   }
+
+  handleInputChange= (e) =>{
+    this.setState({currentTodo: e.target.value})
+    
+  }
+
   render() {
-    const {todos}= this.state
+    const {todos, currentTodo}= this.state
     return (
       <div className="App">
-        <header className="App-header">
+        <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+          <h1 className="App-title">React Todos</h1>
+        </div>
         <div className="Todo-App">
-          <form action="">
-            <input type="text"/>
+          <form action="" id='idForm'>
+            <input 
+              type="text" 
+              value={currentTodo} 
+              onChange={this.handleInputChange}/>
           </form>
           <ul>
             {todos.map(todo => 
