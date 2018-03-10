@@ -20,3 +20,8 @@ export const updateTodo = (list, item) => {
         };    
     });
 }
+
+export const removeTodo = (array, id) =>{
+    return array.filter((item, index) => item.id !== id);
+
+}

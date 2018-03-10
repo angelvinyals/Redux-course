@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {TodoItem} from './TodoItem'
 
-export const TodoList = ({todos, handleToggle}) => (
+export const TodoList = ({todos, handleToggle, handleRemove}) => (
   <div>
     <ul>
 	    {todos.map(todo => 
@@ -10,6 +10,7 @@ export const TodoList = ({todos, handleToggle}) => (
 	    		key={todo.id} 
 	    		{...todo}
 	    		handleToggle={handleToggle}
+	    		handleRemove={handleRemove}
 	    	/>)}  
 	</ul>
   </div>

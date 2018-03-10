@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 
 export const TodoItem = (props) => (  
 	<li>
+		<span className="delete-item">
+			<button 
+				onClick={()=> props.handleRemove(props.id)}
+			>
+				X
+			</button>
+		</span>
 		<input 
 			type="checkbox" 
 			checked={props.isComplete}

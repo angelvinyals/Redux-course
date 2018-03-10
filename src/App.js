@@ -4,7 +4,7 @@ import {v4} from 'uuid';
 import logo from './logo.svg';
 import './App.css';
 import {TodoForm, TodoList} from './components/todo'
-import {addTodo,findById, toggleTodo, updateTodo} from './lib/todoHelpers'
+import {addTodo,findById, toggleTodo, updateTodo, removeTodo} from './lib/todoHelpers'
 import {partial, pipe} from './lib/utils'
 
 class App extends Component {
@@ -53,6 +53,11 @@ class App extends Component {
     })
   }
 
+  handleRemove = (id) => {
+    const newTodos= removeTodo(this.state.todos, id)
+    this.setState ({todos: newTodos})
+  }
+
   render() {    
     const submitHandler= this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit
     return (
@@ -71,6 +76,7 @@ class App extends Component {
           <TodoList 
             todos={this.state.todos}
             handleToggle={this.handleToggle}
+            handleRemove={this.handleRemove}
           />
         </div>
       </div>
