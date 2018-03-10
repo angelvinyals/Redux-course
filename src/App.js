@@ -19,7 +19,10 @@ class App extends Component {
   }
 
   handleInputChange = (e) => {
-    this.setState({currentTodo: e.target.value})    
+    this.setState({
+      currentTodo: e.target.value,
+      errorMessage:''
+    })    
   }
 
   handleSubmit = (e) => {
@@ -32,10 +35,17 @@ class App extends Component {
       todos: addTodo(this.state.todos,newTodo),
       currentTodo: ''
     })
+  }
 
+  handleEmptySubmit = (e) => {
+    e.preventDefault()
+    this.setState({
+      errorMessage: 'Please supply a todo name'
+    })
   }
 
   render() {    
+    const submitHandler= this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit
     return (
       <div className="App">
         <div className="App-header">
@@ -43,10 +53,11 @@ class App extends Component {
           <h1 className="App-title">React Todos</h1>
         </div>
         <div className="Todo-App">
+          {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
           <TodoForm 
             handleInputChange={this.handleInputChange} 
             currentTodo={this.state.currentTodo}
-            handleSubmit={this.handleSubmit}
+            handleSubmit={submitHandler}
           />          
           <TodoList 
             todos={this.state.todos}
