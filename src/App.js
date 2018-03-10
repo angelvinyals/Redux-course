@@ -7,16 +7,15 @@ import {TodoForm, TodoList} from './components/todo'
 import {addTodo} from './lib/todoHelpers'
 
 class App extends Component {
-  constructor(){
-    super()
-    this.state ={
-      todos: [
-        {id:"50434fr5-9147-4c2f-8ea9-7c407aba572c", name:'Learn', isComplete:false},
-        {id:"50434f35-9147-4c2f-8ea9-7c407aba573c", name:'Build an Awesome app', isComplete:false},
-        {id:"50434f65-9147-432f-8ea9-7c407aba574c", name:'Ship', isComplete:true}
-      ],      
-    }    
-  }
+  
+  state ={
+    todos: [
+      {id:"50434fr5-9147-4c2f-8ea9-7c407aba572c", name:'Learn', isComplete:false},
+      {id:"50434f35-9147-4c2f-8ea9-7c407aba573c", name:'Build an Awesome app', isComplete:false},
+      {id:"50434f65-9147-432f-8ea9-7c407aba574c", name:'Ship', isComplete:true}
+    ],      
+  }    
+  
 
   handleInputChange = (e) => {
     this.setState({
