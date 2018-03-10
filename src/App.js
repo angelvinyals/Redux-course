@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {TodoForm} from './components/todo/TodoForm'
 
 
 //this is a static versionc
@@ -33,12 +34,10 @@ class App extends Component {
           <h1 className="App-title">React Todos</h1>
         </div>
         <div className="Todo-App">
-          <form action="" id='idForm'>
-            <input 
-              type="text" 
-              value={currentTodo} 
-              onChange={this.handleInputChange}/>
-          </form>
+          <TodoForm 
+            handleInputChange={this.handleInputChange} 
+            currentTodo={currentTodo}
+          />          
           <ul>
             {todos.map(todo => 
               <li key={todo.id}>
