@@ -4,7 +4,7 @@ import {v4} from 'uuid';
 import logo from './logo.svg';
 import './App.css';
 import {TodoForm, TodoList} from './components/todo'
-import {addTodo} from './lib/todoHelpers'
+import {addTodo,findById, toggleTodo, updateTodo} from './lib/todoHelpers'
 
 class App extends Component {
   
@@ -40,6 +40,15 @@ class App extends Component {
     e.preventDefault()
     this.setState({
       errorMessage: 'Please supply a todo name'
+    })
+  }
+
+  handleToggle = (id) => {
+    const todo = findById(id, this.state.todos)
+    const toggled = toggleTodo(todo)
+    const updatedTodos= updateTodo(this.state.todos, toggled)
+    this.setState({
+      todos: updatedTodos
     })
   }
 
