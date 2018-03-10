@@ -17,6 +17,6 @@ TodoForm.propTypes = {
   // You can declare that a prop is a specific JS primitive. By default, these
   // are all optional.
   handleInputChange: PropTypes.func.isRequired ,
-  currentTodo: PropTypes.string.isRequired ,
+  currentTodo: PropTypes.string ,
   handleSubmit: PropTypes.func.isRequired
 }

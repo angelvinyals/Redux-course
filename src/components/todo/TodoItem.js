@@ -14,7 +14,7 @@ export const TodoItem = (props) => (
 TodoItem.propTypes = {
   // You can declare that a prop is a specific JS primitive. By default, these
   // are all optional.
-  id:PropTypes.number.isRequired,
+  id:PropTypes.string.isRequired,
   isComplete: PropTypes.bool,
   name: PropTypes.string.isRequired,
 }

@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {v4} from 'uuid';
 import logo from './logo.svg';
 import './App.css';
 import {TodoForm, TodoList} from './components/todo'
+import {addTodo} from './lib/todoHelpers'
 
 class App extends Component {
   constructor(){
     super()
     this.state ={
       todos: [
-        {id:1, name:'Learn', isComplete:false},
-        {id:2, name:'Build an Awesome app', isComplete:false},
-        {id:3, name:'Ship', isComplete:true}
+        {id:"50434fr5-9147-4c2f-8ea9-7c407aba572c", name:'Learn', isComplete:false},
+        {id:"50434f35-9147-4c2f-8ea9-7c407aba573c", name:'Build an Awesome app', isComplete:false},
+        {id:"50434f65-9147-432f-8ea9-7c407aba574c", name:'Ship', isComplete:true}
       ],      
     }    
   }
 
-  handleInputChange= (e) =>{
+  handleInputChange = (e) => {
     this.setState({currentTodo: e.target.value})    
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const newTodo={
+      id:v4(),
+      name: this.state.currentTodo, 
+      isComplete:false}
+    this.setState({
+      todos: addTodo(this.state.todos,newTodo),
+      currentTodo: ''
+    })
+
   }
 
   render() {    
@@ -31,6 +46,7 @@ class App extends Component {
           <TodoForm 
             handleInputChange={this.handleInputChange} 
             currentTodo={this.state.currentTodo}
+            handleSubmit={this.handleSubmit}
           />          
           <TodoList 
             todos={this.state.todos}
