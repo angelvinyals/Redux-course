@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const TodoForm = ({currentTodo='', handleInputChange}) => (
+export const TodoForm = ({currentTodo='', handleInputChange, handleSubmit}) => (
   <div>
-    <form action="" id='idForm'>
+    <form  id='idForm' onSubmit={handleSubmit}>
       <input 
         type="text" 
         value={currentTodo} 
@@ -16,6 +16,7 @@ export const TodoForm = ({currentTodo='', handleInputChange}) => (
 TodoForm.propTypes = {
   // You can declare that a prop is a specific JS primitive. By default, these
   // are all optional.
-  handleInputChange: PropTypes.func,
-  currentTodo: PropTypes.string,
+  handleInputChange: PropTypes.func.isRequired ,
+  currentTodo: PropTypes.string.isRequired ,
+  handleSubmit: PropTypes.func.isRequired
 }
