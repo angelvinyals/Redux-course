@@ -1,13 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export const TodoItem = (props) => (
-  
+export const TodoItem = (props) => (  
 	<li>
 		<input 
 			type="checkbox" 
 			defaultChecked={props.isComplete}
 		/>
 		{props.name}
-	</li>
-	 
+	</li>	 
 )
+
+TodoItem.propTypes = {
+  // You can declare that a prop is a specific JS primitive. By default, these
+  // are all optional.
+  id:PropTypes.number.isRequired,
+  isComplete: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+}

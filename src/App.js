@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 import {TodoForm, TodoList} from './components/todo'
 
-
-
-//this is a static versionc
 class App extends Component {
   constructor(){
     super()
@@ -14,20 +12,15 @@ class App extends Component {
         {id:1, name:'Learn', isComplete:false},
         {id:2, name:'Build an Awesome app', isComplete:false},
         {id:3, name:'Ship', isComplete:true}
-
-      ],
-      
-    }
-    
+      ],      
+    }    
   }
 
   handleInputChange= (e) =>{
-    this.setState({currentTodo: e.target.value})
-    
+    this.setState({currentTodo: e.target.value})    
   }
 
-  render() {
-    
+  render() {    
     return (
       <div className="App">
         <div className="App-header">
@@ -50,3 +43,10 @@ class App extends Component {
 
 export default App;
 
+App.propTypes = {
+  // You can declare that a prop is a specific JS primitive. 
+  //By default, these are all optional.
+  todos: PropTypes.array,
+  handleInputChange: PropTypes.func,
+  currentTodo: PropTypes.string,
+}  
