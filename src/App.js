@@ -69,6 +69,7 @@ class App extends Component {
           />          
           <TodoList 
             todos={this.state.todos}
+            handleToggle={this.handleToggle}
           />
         </div>
       </div>
