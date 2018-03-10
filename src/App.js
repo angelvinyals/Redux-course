@@ -3,9 +3,21 @@ import logo from './logo.svg';
 import './App.css';
 
 
-//this is a static version
+//this is a static versionc
 class App extends Component {
+  constructor(){
+    super()
+    this.state ={
+      todos: [
+        {id:1, name:'Learn', isComplete:false},
+        {id:2, name:'Build an Awesome app', isComplete:false},
+        {id:3, name:'Ship', isComplete:true}
+
+      ]
+    }
+  }
   render() {
+    const {todos}= this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -17,18 +29,11 @@ class App extends Component {
             <input type="text"/>
           </form>
           <ul>
-            <li>
-              <input type="checkbox"/>
-              Learn
-            </li>
-            <li>
-              <input type="checkbox"/>
-              Build an Awesome App
-            </li>
-            <li>
-              <input type="checkbox"/>
-              Ship it!
-            </li>
+            {todos.map(todo => 
+              <li key={todo.id}>
+                <input type="checkbox" defaultChecked={todo.isComplete}/>{todo.name}
+              </li>
+            )}  
           </ul>
         </div>
       </div>
