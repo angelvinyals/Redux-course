@@ -6,7 +6,7 @@ import './App.css';
 import {TodoForm, TodoList, Footer} from './components/todo'
 import {addTodo,findById, toggleTodo, updateTodo, removeTodo, filterTodos} from './lib/todoHelpers'
 import {partial, pipe} from './lib/utils'
-import {loadTodos, createTodo, saveTodo} from './lib/todoService'
+import {loadTodos, createTodo, saveTodo, deleteTodo} from './lib/todoService'
 
 class App extends Component {
   
@@ -76,8 +76,13 @@ class App extends Component {
   }
 
   handleRemove = (id) => {
-    const newTodos= removeTodo(this.state.todos, id)
-    this.setState ({todos: newTodos})
+    deleteTodo(id)
+      .then(() => {
+        const newTodos= removeTodo(this.state.todos, id)
+        this.setState ({todos: newTodos})
+        return this.showTempMessage('Todo Remove')
+      })
+    
   }
 
   
