@@ -62,6 +62,10 @@ li:hover span.delete-item{
   color:red;
 }
 
+.success{
+  color:green;
+}
+
 .Footer button.active{
   font-weight: bold;
   color: green;
