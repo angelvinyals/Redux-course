@@ -6,7 +6,7 @@ import './App.css';
 import {TodoForm, TodoList, Footer} from './components/todo'
 import {addTodo,findById, toggleTodo, updateTodo, removeTodo, filterTodos} from './lib/todoHelpers'
 import {partial, pipe} from './lib/utils'
-import {loadTodos} from './lib/todoService'
+import {loadTodos, createTodo} from './lib/todoService'
 
 class App extends Component {
   
@@ -38,10 +38,14 @@ class App extends Component {
       id:v4(),
       name: this.state.currentTodo, 
       isComplete:false}
-    this.setState({
-      todos: addTodo(this.state.todos,newTodo),
-      currentTodo: ''
-    })
+    createTodo(newTodo).
+      then(res => {
+        return this.setState({
+          todos: addTodo(this.state.todos,newTodo),
+          currentTodo: ''
+        })
+      })
+    
   }
 
   handleEmptySubmit = (e) => {
