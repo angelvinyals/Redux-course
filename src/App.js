@@ -6,19 +6,23 @@ import './App.css';
 import {TodoForm, TodoList, Footer} from './components/todo'
 import {addTodo,findById, toggleTodo, updateTodo, removeTodo, filterTodos} from './lib/todoHelpers'
 import {partial, pipe} from './lib/utils'
+import {loadTodos} from './lib/todoService'
 
 class App extends Component {
   
   state ={
     todos: [
-      {id:"50434fr5-9147-4c2f-8ea9-7c407aba572c", name:'Learn', isComplete:false},
-      {id:"50434f35-9147-4c2f-8ea9-7c407aba573c", name:'Build an Awesome app', isComplete:false},
-      {id:"50434f65-9147-432f-8ea9-7c407aba574c", name:'Ship', isComplete:true}
+      
     ],      
   }    
   
   static contextTypes = {
     route: PropTypes.string
+  }
+  
+  componentDidMount(){
+    loadTodos()
+      .then(todos => this.setState({todos}))
   }
 
   handleInputChange = (e) => {
