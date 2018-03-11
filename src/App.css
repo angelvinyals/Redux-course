@@ -62,7 +62,11 @@ li:hover span.delete-item{
   color:red;
 }
 
-.Footer a{
-  padding-left: 0.3em;
-  padding-right: 0.3em;
+.Footer button.active{
+  font-weight: bold;
+  color: green;
+}
+
+.Footer button:hover{
+  color: green;
 }
