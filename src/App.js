@@ -4,7 +4,7 @@ import {v4} from 'uuid';
 import logo from './logo.svg';
 import './App.css';
 import {TodoForm, TodoList, Footer} from './components/todo'
-import {addTodo,findById, toggleTodo, updateTodo, removeTodo} from './lib/todoHelpers'
+import {addTodo,findById, toggleTodo, updateTodo, removeTodo, filterTodos} from './lib/todoHelpers'
 import {partial, pipe} from './lib/utils'
 
 class App extends Component {
@@ -17,6 +17,9 @@ class App extends Component {
     ],      
   }    
   
+  static contextTypes = {
+    route: PropTypes.string
+  }
 
   handleInputChange = (e) => {
     this.setState({
@@ -58,8 +61,11 @@ class App extends Component {
     this.setState ({todos: newTodos})
   }
 
+  
+
   render() {    
     const submitHandler= this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit
+    const filtered= filterTodos(this.state.todos, this.context.route)
     return (
       <div className="App">
         <div className="App-header">
@@ -74,7 +80,7 @@ class App extends Component {
             handleSubmit={submitHandler}
           />          
           <TodoList 
-            todos={this.state.todos}
+            todos={filtered}
             handleToggle={this.handleToggle}
             handleRemove={this.handleRemove}
           />

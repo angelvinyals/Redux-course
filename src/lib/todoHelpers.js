@@ -25,3 +25,16 @@ export const removeTodo = (array, id) =>{
     return array.filter((item, index) => item.id !== id);
 
 }
+
+export const filterTodos = (array, route) =>{
+    switch(route){
+        case '/active':
+            return array.filter(todo => todo.isComplete === false)
+        case '/completed':
+            return array.filter(todo => todo.isComplete === true)
+        case '/':
+            return array
+        default:
+            return array    
+    }
+}
