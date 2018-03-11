@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {v4} from 'uuid';
 import logo from './logo.svg';
 import './App.css';
-import {TodoForm, TodoList} from './components/todo'
+import {TodoForm, TodoList, Footer} from './components/todo'
 import {addTodo,findById, toggleTodo, updateTodo, removeTodo} from './lib/todoHelpers'
 import {partial, pipe} from './lib/utils'
 
@@ -78,6 +78,7 @@ class App extends Component {
             handleToggle={this.handleToggle}
             handleRemove={this.handleRemove}
           />
+          <Footer/>
         </div>
       </div>
     );
